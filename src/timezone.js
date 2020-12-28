@@ -1,5 +1,7 @@
 import {findFirst} from "@revgaming/helpers";
+import {config} from "@revgaming/config";
 import Preference from "@revgaming/preference";
+
 
 export const getTimeZones = () => require("./data/timezones.json");
 export const getTimeZoneCode = () => config('app.timezone')
