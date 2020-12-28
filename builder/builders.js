@@ -2,8 +2,19 @@ import fs from "fs";
 import config from "./config";
 import {pluck} from "./Object";
 
+const writeJS = (file, obj) => {
+    fs.writeFileSync(file, `export default ${JSON.stringify(obj)}`);
+    console.log(`[created] ${file}`)
+}
+
+const writeJSON = (file, obj, tabs = null) => {
+    fs.writeFileSync(file, JSON.stringify(obj), null, tabs);
+    console.log(`[created] ${file}`)
+}
+
 const loadJSON = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const getCountries = () => loadJSON(config.countries);
+const getCurrencies = () => loadJSON(config.currencies);
 const getFilteredCodes = () => ['remove', 'disabled'].includes(config.filterMode) ? loadJSON(config.filtered) : undefined;
 const getLocales = () => loadJSON(config.locales)
 const isRemoved = (code, codes) => codes && codes.length && codes.includes(code) && config.filterMode === "remove";
@@ -17,6 +28,7 @@ const buildCountries = function () {
     const data = [];
 
     const countries = getCountries();
+    const currencies = getCurrencies();
     const codes = getFilteredCodes();
 
     const locales = getLocales();
@@ -34,6 +46,7 @@ const buildCountries = function () {
 
         const country = {
             code: code.toUpperCase(),
+            curr: currencies[code],
             en: name
         }
 
@@ -104,19 +117,13 @@ const buildTimezones = function () {
 
     return timezones;
 }
-const writeJS = (file, obj) => {
-    fs.writeFileSync(file, `export default ${JSON.stringify(obj)}`);
-    console.log(`[created] ${file}`)
-}
-
-const writeJSON = (file, obj, tabs = null) => {
-    fs.writeFileSync(file, JSON.stringify(obj), null, tabs);
-    console.log(`[created] ${file}`)
-}
 
 
 export {
-    buildCountries, buildTimezones,
-    writeJS, writeJSON
+    buildCountries,
+    buildTimezones,
+    writeJS,
+    writeJSON,
+    loadJSON,
 }
 

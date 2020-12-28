@@ -1,8 +1,9 @@
 {
   "name": "@revgaming/location",
   "author": "estagent <estagent@gmail.com>",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "timezone country localization",
+  "homepage": "https://github.com/estagent/localization",
   "main": "src/index.js",
   "license": "ISC",
   "keywords": [
@@ -31,7 +32,7 @@
     "webpack-cli": "^4.2.0"
   },
   "scripts": {
-    "scripts": "babel-node scripts/buildTimezoneCountry.js ",
+    "scripts": "babel-node builder/index.js ",
     "test": "babel-node tests/test.js ",
     "build": "webpack"
   }
