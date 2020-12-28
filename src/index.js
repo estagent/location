@@ -1,7 +1,11 @@
 import {mergeTranslations} from "@revgaming/languages"
-import {getTimeZones, getTimeZone, getTimeZoneCode, setTimeZoneCode, detectTimeZone} from "./timezone";
-import {getCountries, getCountry} from "./country";
+import {getTimeZones, setTimeZoneCode, detectTimeZone} from "./timezone";
+import {getCountries, getCountry, getCountryName} from "./country";
 import translations from "./translations";
+import {config} from "@revgaming/config";
+
+
+const timezone = () => config('app.timezone');
 
 export const bootLocation = opts => {
     if (opts.hasOwnProperty("tz"))
@@ -9,8 +13,17 @@ export const bootLocation = opts => {
     else
         detectTimeZone();
     mergeTranslations('location', translations)
+
+    return {
+        timezone: timezone,
+    }
 }
 
 export {
-    getTimeZoneCode, setTimeZoneCode, getTimeZone, getTimeZones, getCountry, getCountries
+    timezone,
+    setTimeZoneCode as setTimezone,
+    getTimeZones as timezones,
+    getCountry as country,
+    getCountries as countries,
+    getCountryName as country_name
 }
