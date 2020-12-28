@@ -6,7 +6,7 @@ import Preference from "@revgaming/preference";
 export const getTimeZones = () => require("./data/timezones.json");
 export const getTimeZoneCountryCode = () => getTimeZone()['c'];
 export const getTimeZone = (tz) => findFirst(getTimeZones(), {tz: tz ?? config('app.timezone')})
-export const setTimeZoneCode = (tz, isPreferred = true) => {
+export const setTimeZone = (tz, isPreferred = true) => {
     const t = getTimeZone(tz);
     if (t) {
         config({'app.timezone': tz})
