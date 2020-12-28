@@ -7,7 +7,7 @@ import {config} from '@revgaming/config'
 const timezone = () => config('app.timezone')
 
 export const bootLocation = opts => {
-  if (opts.hasOwnProperty('tz')) setTimeZone(opts.tz, false)
+  if (opts.hasOwnProperty('timezone')) setTimeZone(opts.timezone, false)
   else detectTimeZone()
   mergeTranslations('location', translations)
   return {
