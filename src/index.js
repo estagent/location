@@ -1,18 +1,23 @@
 import translations from "./translations";
-import {timezones, timezone, getTimezoneCode, setTimezoneCode, detectTimeZone,} from "./timezone";
-import {countries, country} from "./country";
+import {getTimeZones, getTimeZone, getTimeZoneCode, setTimeZoneCode, detectTimeZone} from "./timezone";
+import {getCountries, getCountry} from "./country";
 
-export default function (opts) {
-    detectTimeZone();
+export default function (opts = {}) {
+
+    if (opts.hasOwnProperty("tz"))
+        setTimeZoneCode(opts.tz, false)
+    else
+        detectTimeZone();
+
     if (window['mergeTranslations'])
         mergeTranslations('location', translations)
 
     return {
-        getTimezone: getTimezoneCode,
-        setTimezone: setTimezoneCode,
-        timezone: timezone,
-        timezones: timezones,
-        country: country,
-        countries: countries,
+        getTimezone: getTimeZoneCode,
+        setTimezone: setTimeZoneCode,
+        timezone: getTimeZone,
+        timezones: getTimeZones,
+        country: getCountry,
+        countries: getCountries,
     }
 }

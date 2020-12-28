@@ -1,12 +1,12 @@
 import Preference from "@revgaming/preference";
 import {findFirst} from "@revgaming/helpers";
-import {getTimezoneCountryCode} from "./timezone";
+import {getTimeZoneCountryCode} from "./timezone";
 
 
-export const getCountryCode = () => Preference.get('country') ?? getTimezoneCountryCode()
+export const getCountryCode = () => Preference.get('country') ?? getTimeZoneCountryCode()
 export const setCountryCode = (code) => Preference.set('country', code);
-export const country = (code) => findFirst(countries(), {code: code ?? getCountryCode()});
-export const countries = () => require("./data/countries.json");
+export const getCountry = (code) => findFirst(getCountries(), {code: code ?? getCountryCode()});
+export const getCountries = () => require("./data/countries.json");
 
 
 
