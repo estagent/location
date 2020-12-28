@@ -1,23 +1,16 @@
-import translations from "./translations";
+import {mergeTranslations} from "@revgaming/languages"
 import {getTimeZones, getTimeZone, getTimeZoneCode, setTimeZoneCode, detectTimeZone} from "./timezone";
 import {getCountries, getCountry} from "./country";
+import translations from "./translations";
 
-export default function (opts = {}) {
-
+export const bootLocation = opts => {
     if (opts.hasOwnProperty("tz"))
         setTimeZoneCode(opts.tz, false)
     else
         detectTimeZone();
+    mergeTranslations('location', translations)
+}
 
-    if (window['mergeTranslations'])
-        mergeTranslations('location', translations)
-
-    return {
-        getTimezone: getTimeZoneCode,
-        setTimezone: setTimeZoneCode,
-        timezone: getTimeZone,
-        timezones: getTimeZones,
-        country: getCountry,
-        countries: getCountries,
-    }
+export {
+    getTimeZoneCode, setTimeZoneCode, getTimeZone, getTimeZones, getCountry, getCountries
 }
