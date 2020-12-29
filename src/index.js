@@ -1,6 +1,11 @@
 import {mergeTranslations} from '@revgaming/languages'
-import {getTimeZones, setTimeZone, detectTimeZone} from './timezone'
-import {getCountries, getCountry, getCountryName} from './country'
+import {
+  getTimeZones,
+  setTimeZone,
+  detectTimeZone,
+  getTimeZonesByCountry,
+} from './timezone'
+import {getCountries, getCountry, getCountryName, setCountry} from './country'
 import translations from './translations'
 import {config} from '@revgaming/config'
 
@@ -12,6 +17,13 @@ export const bootLocation = opts => {
   mergeTranslations('location', translations)
   return {
     timezone: timezone,
+    setTimeZone: setTimeZone,
+    getTimeZones: getTimeZones,
+    getTimeZonesByCountry: getTimeZonesByCountry,
+    getCountry: getCountry,
+    setCountry: setCountry,
+    getCountries: getCountries,
+    getCountryName: getCountryName,
   }
 }
 
@@ -22,4 +34,5 @@ export {
   getCountry,
   getCountries,
   getCountryName,
+  getTimeZonesByCountry
 }
