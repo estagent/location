@@ -1,7 +1,7 @@
 import {findFirst, findAll} from '@revgaming/helpers'
 import {config} from '@revgaming/config'
 import Preference from '@revgaming/preference'
-import {getCountryCode} from '@/country'
+import {getCountryCode} from './country'
 
 export const getTimeZones = () => require('./data/timezones.json')
 export const getCountryCodeByTimeZone = tz => {

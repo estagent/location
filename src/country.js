@@ -1,7 +1,7 @@
 import Preference from "@revgaming/preference";
 import {findFirst} from "@revgaming/helpers";
-import {getCountryCodeByTimeZone} from "./timezone";
 import {config} from "@revgaming/config";
+import {getCountryCodeByTimeZone} from "./timezone";
 
 export const getCountryCode = () => Preference.get('country') ?? getCountryCodeByTimeZone()
 export const setCountry = (code) => code ? Preference.set('country', code) : false;
