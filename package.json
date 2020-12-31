@@ -1,7 +1,7 @@
 {
   "name": "@revgaming/location",
   "author": "estagent <estagent@gmail.com>",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "timezone country localization",
   "homepage": "https://github.com/estagent/localization",
   "main": "src/index.js",
@@ -14,8 +14,8 @@
   ],
   "dependencies": {
     "@revgaming/config": "^2.2.7",
-    "@revgaming/helpers": "^1.0.5",
-    "@revgaming/languages": "^3.1.2",
+    "@revgaming/helpers": "^1.0.7",
+    "@revgaming/languages": "^3.1.4",
     "@revgaming/preference": "^1.0.2"
   },
   "devDependencies": {
